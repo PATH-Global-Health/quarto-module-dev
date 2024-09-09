@@ -60,14 +60,14 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "3.6.0",
+      "Version": "3.6.3",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "utils"
       ],
-      "Hash": "3177a5a16c243adc199ba33117bd9657"
+      "Hash": "b21916dd77a27642b447374a5d30ecf3"
     },
     "digest": {
       "Package": "digest",
