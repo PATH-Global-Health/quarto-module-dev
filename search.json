@@ -2,41 +2,121 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "quarto-module-dev",
+    "title": "Using Quarto and RStudio to build Data fellowship module materials",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "text": "Starting Point\nThese resources are intended to help us build and maintain materials and modules for the Data Fellowship training materials. These can also serve as a useful resource when wanting to use Quarto and GitHub pages for other aspects of our work. Therefore these resources will continue to grow and evolve with us - send suggestions for content or improvements through the issues tab on the GitHub Repo.",
     "crumbs": [
-      "Preface"
+      "Starting Point"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "objectID": "index.html#system-requirements",
+    "href": "index.html#system-requirements",
+    "title": "Using Quarto and RStudio to build Data fellowship module materials",
+    "section": "⚠ System Requirements ⚠",
+    "text": "⚠ System Requirements ⚠\nBefore you can start using Quarto to build out webpages or reports you need to ensure the following are installed on your computer\n\nR - https://www.r-project.org/\nRstudio - https://posit.co/download/rstudio-desktop/\nQuarto - https://quarto.org/docs/download/\nGit - https://git-scm.com/downloads\n\nEnsure you have a GitHub profile and are a member of PATH-Global-Health organization\nIf you haven’t installe these packages before ensure the usethis gh renv and quarto packages are installed by typing this in the RStudio console:\ninstall.packages(c(\"usethis\", \"gh\", \"renv\", \"quarto\", \"gitcreds\"))\n\nConfigure Git with RStudio\nAfter installing Git and setting up a GitHub account, the next step is to configure Git in RStudio. If you’ve linked your GitHub account to R already then skip ahead to What stage are you building from?\n\nOpen RStudio.\nConfigure Git in RStudio:\n\nGo to Tools &gt; Global Options.\nIn the left-hand sidebar, click Git/SVN.\nMake sure the path to the Git executable is correct (this should automatically detect where Git was installed). For Windows, it might look something like C:/Program Files/Git/bin/git.exe.\nClick Ok\n\nWe want Git to know who we are so it can associate changes with you. Enter the following code in your console and replace the user name and email to those linked to your github account\n\nusethis::use_git_config(user.name=\"Jane Doe\", user.email=\"jane@example.org\")",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "Starting Point"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
+    "objectID": "index.html#linking-to-github",
+    "href": "index.html#linking-to-github",
+    "title": "Using Quarto and RStudio to build Data fellowship module materials",
+    "section": "Linking to GitHub",
+    "text": "Linking to GitHub\nWhen its time to send our files to GitHub, we need GitHub to know who we are and that we have permission to write to our repositories. We can establish this authorisation through either a personal access token or a SSH key.\nWe can generate a PAT through GitHub directly through https://github.com/settings/tokens and click “Generate token”. Look over the scopes; I highly recommend selecting repo, user, and workflow. Copy the generated PAT to your clipboard. Or leave that browser window open and available for a little while, so you can come back to copy the PAT.\nAnother option is to create this directly in R using:\nusethis::create_github_token()\nRecommended scopes will be pre-selected if you used create_github_token().\nNow in R call, gitcreds::gitcreds_set() to get a prompt where you can paste your PAT:\n&gt; gitcreds::gitcreds_set()\n\n? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n-&gt; Adding new credentials...\n-&gt; Removing credentials from cache...\n-&gt; Done.\nYou should be able to work with GitHub now, i.e. push and pull!",
+    "crumbs": [
+      "Starting Point"
+    ]
+  },
+  {
+    "objectID": "index.html#sec-stage",
+    "href": "index.html#sec-stage",
+    "title": "Using Quarto and RStudio to build Data fellowship module materials",
+    "section": "What stage are you building from?",
+    "text": "What stage are you building from?\nBefore getting started we need to understand from what point we are building resources from - the following starting points cover the most common starting points we tend to find ourselves in\n\n\n\n\n\n\n\nStarting Point\nDescription\n\n\n\n\nBuilding from scratch\nStart here if you want to learn about setting up a completly new resource and with tips and steps about using GitHub for the first time too\n\n\nBuilding from an existing GitHub Repository\nStart here if you are collaborating on resources and want to add additional materials to an already existing module",
+    "crumbs": [
+      "Starting Point"
+    ]
+  },
+  {
+    "objectID": "building-from-scratch.html",
+    "href": "building-from-scratch.html",
+    "title": "1  Building From Scratch",
+    "section": "",
+    "text": "1.1 Step 1: Set up new Quarto Book Project in RStudio\nWe suggest using the Quarto Book format for hosting training materials - there are several other Quarto output styles that you can work with but this what has worked well for this style of content delivery.\nRStudio will open up your new project. The Quarto Book project structure will include:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Building From Scratch</span>"
+    ]
+  },
+  {
+    "objectID": "building-from-scratch.html#step-1-set-up-new-quarto-book-project-in-rstudio",
+    "href": "building-from-scratch.html#step-1-set-up-new-quarto-book-project-in-rstudio",
+    "title": "1  Building From Scratch",
+    "section": "",
+    "text": "Open RStudio.\nGo to the menu: File → New Project... → New Directory → Quarto Book.\nName the project and select the location where you want to save the project files on your computer. (I like to use a folder called github and all my repos exist in separate folders but pick what works for you!)\nEnsure the checkbox for Create a Git repository is selected (this initializes Git locally in the project).\nAnd also tick the checkbox for use renv with this project. This will create a local environment for the project and store all your package dependencies in an renv.lock file, this is an important aspect for hosting our site on gh-pages later on.\nClick Create Project.\n\n\n\n_quarto.yml: A configuration file where you can define the book’s structure, theme, output format, and other settings.\nindex.qmd: The landing page or introduction to the book. This file can serve as the cover page with a description of your project.\nqmd files for chapters: A few example .qmd files will be provided as placeholders for different chapters, which you can edit or replace with your content.\nAn renv folder: This directory contains your project-specific package library, and an renv.lock file will be created to lock down package versions and dependencies, ensuring the project remains reproducible and code can be executed on publishing to our online portal.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Building From Scratch</span>"
+    ]
+  },
+  {
+    "objectID": "building-from-scratch.html#step-2-stage-initial-commit-to-github",
+    "href": "building-from-scratch.html#step-2-stage-initial-commit-to-github",
+    "title": "1  Building From Scratch",
+    "section": "1.2 Step 2: Stage initial commit to GitHub",
+    "text": "1.2 Step 2: Stage initial commit to GitHub\nBefore linking this project to GitHub, we need to make sure the initial project files are committed to the local Git repository.\n\nHead to the Terminal tab next to the console.\nIn the terminal, check which files are ready to be staged using:\n\n    git status\n\nThis will show the files that have been modified or are new and need to be added to the repository. It will also tell us which branch we are working on in brackets. If this is the master branch lets change it to be called main.\n\ngit branch -m master main \n\nTo add all files to the staging area (the files you want to include in your commit - here this will just be our default Quarto Book Project files which is okay, run:\n\ngit add . \n\nThe . adds all the files in the current directory\nAfter staging the files, you’ll need to commit them. The commit message should describe what changes or additions you’re committing.To commit the changes, use: The -m flag allows you to add a message in quotes (\" \") describing the commit.\n\ngit commit -m \"Initial commit for Quarto website\"",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Building From Scratch</span>"
+    ]
+  },
+  {
+    "objectID": "building-from-scratch.html#step-3-push-the-local-project-to-github-using-usethisuse_github",
+    "href": "building-from-scratch.html#step-3-push-the-local-project-to-github-using-usethisuse_github",
+    "title": "1  Building From Scratch",
+    "section": "1.3 Step 3 Push the local project to GitHub using usethis::use_github()",
+    "text": "1.3 Step 3 Push the local project to GitHub using usethis::use_github()\nWe now want to link our local repository to GitHub and specially we want it to be part of the PATH-Global-Health GitHub organisation. We can use the following code to do this, run this in your console:\nusethis::use_github(\norganisation = \"PATH-Global-Health\", \nvisibility = \"public\"\n) \nThis command will:\n\nCreate a new GitHub repository.\nLink your local project to this repository.\nPush the project files to GitHub.\n\nThis should then open up the repository automatically in you browser.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Building From Scratch</span>"
+    ]
+  },
+  {
+    "objectID": "building-from-scratch.html#step-4-setting-up-gh-pages",
+    "href": "building-from-scratch.html#step-4-setting-up-gh-pages",
+    "title": "1  Building From Scratch",
+    "section": "1.4 Step 4: Setting up gh-pages",
+    "text": "1.4 Step 4: Setting up gh-pages\nOnce our repository is on GitHub, we can configure the GitHub Pages site - which is where our module resources will be hosted. Use the usethis::use_github_pages() function to set the publishing branch for GitHub Pages.\nTo publish from the gh-pages branch, run:\nr\nusethis::use_github_pages(branch = \"gh-pages\")\nIf we head to our GitHub repository online we want to add some details to the repo page:\nHead back to the &lt;&gt; Code tab and in the About section on the top right open the settings wheel ⚙️ - Under Website check the box next to: [x] “Use your GitHub Pages website” as shown in the image below.\n\nIn addition we can add a short description in this section as in the above image e.g. “MACEPA Data Fellows materials for the [insert module title]”.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Building From Scratch</span>"
+    ]
+  },
+  {
+    "objectID": "building-from-scratch.html#step-5-automate-deployment-with-github-actions",
+    "href": "building-from-scratch.html#step-5-automate-deployment-with-github-actions",
+    "title": "1  Building From Scratch",
+    "section": "1.5 Step 5: Automate Deployment with GitHub Actions",
+    "text": "1.5 Step 5: Automate Deployment with GitHub Actions\nThis is something I’ve found works best for me and my workstyle when creating these modules. Instead of ever rendering my work locally and then publishing this to GitHub I include a GitHub Action command so that when I commit and push changes to the repository GitHub will automatically render the new outputs to the gh-pages site.\nManually building and deploying our project every time we make a change can be time-consuming and prone to error. So by configuring GitHub Actions, we can automate the entire publishing process. Whenever we push changes to the repository (e.g., updated content, code adjustments), GitHub Actions will automatically trigger the workflow to build and deploy our site. Which saves us time and reduces manual effort. This also helps ensure that everyone is working on the most recent version of the materials, with automatic deployment occurring in the background.\n\n1.5.1 Set up\nMore detials on setting up GitHub actions can be found here: https://quarto.org/docs/publishing/github-pages.html.\n\nIn your Quarto project directory, create a folder called .github/worflows\nInside .github/workflows/, create a file called quarto-publish.yml - You do this from within RStudio by heading to the files pane and into the workflows folder → new blank file → Text file and this opens up in R studio and then save this as quarto-publish.yml\nAdd the following content to the quarto-publish.yml\n\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: '4.2.0'\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Install TinyTeX\n        run: |\n          Rscript -e 'tinytex::install_tinytex(force = TRUE)'\n          echo \"PATH=$HOME/.TinyTeX/bin/x86_64-linux:$PATH\" &gt;&gt; $GITHUB_ENV\n\n      - name: Ensure TinyTeX Path\n        run: echo \"$HOME/.TinyTeX/bin/x86_64-linux\" &gt;&gt; $GITHUB_PATH\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\ncall renv::snapshot(), snapshot() updates the lockfile with metadata about the currently-used packages in the project library.\n\nThis quarto-publish.yml I have worked on standardising across the projects I’ve developed for the Data Fellows so far - should you have any issues please reach out to Hayley to help troubleshoot!\nOther options for publishing content can be found here: https://quarto.org/docs/publishing/",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Building From Scratch</span>"
+    ]
+  },
+  {
+    "objectID": "building-from-scratch.html#step-6-push-updates-to-github",
+    "href": "building-from-scratch.html#step-6-push-updates-to-github",
+    "title": "1  Building From Scratch",
+    "section": "1.6 Step 6 Push updates to GitHub",
+    "text": "1.6 Step 6 Push updates to GitHub\nWe can now push the all of the following changes to GitHub and test if the publishing action has worked - don’t worry that we haven’t changed any content yet we will get there!\nSwitch to the Terminal pane and run the following:\ngit add . \ngit commit -m \"deploying and testing github actions and publishing\"  \ngit push origin main",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Building From Scratch</span>"
+    ]
+  },
+  {
+    "objectID": "building-from-existing.html",
+    "href": "building-from-existing.html",
     "title": "2  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
-    ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "References"
     ]
   }
 ]
