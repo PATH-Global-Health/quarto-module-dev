@@ -4,11 +4,10 @@ project:
 book:
   title: "Using Quarto and RStudio to build Data fellowship module materials"
   subtitle: "MACEPA Data Fellowship - Training Materials"
-   chapters:
+  chapters:
     - index.qmd
     - building-from-scratch.qmd
     - building-from-existing.qmd
-
 
 format:
   html:
