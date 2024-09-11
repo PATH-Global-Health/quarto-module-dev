@@ -1,0 +1,61 @@
+/*-- scss:defaults --*/
+
+/*-- scss:defaults --*/
+
+$body-color: #464F60;
+$headings-color: #F65050;
+$link-color:#008c9B;
+
+$blue: #99D1D7;
+$orange: #FFE178;
+$green: #A5DFBF;
+$red: #FBB9b9;
+$indigo: #FBB9b9;
+$cyan: #008c9B;
+$teal: #005A87;
+
+
+$warning: #A8001E;
+$info: #A8001E;
+$success: #1EAF5F;
+$danger: #A8001E;
+$caution: #FFE178;
+
+$code-block-bg: #E5EEF3;
+
+.shaded-box {
+  background-color: rgba(240, 240, 240, 0.8);;
+  padding: 10px;
+}
+
+.shaded-box h3 {
+   margin: 0;
+}
+   
+.shaded-box li {
+   margin-left: 20px;
+   margin-right: 20px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 28px;
+    color: #485264; /* A specific color */
+    /* Add other custom styles as needed */
+}
+
+.q-part-title {
+    font-weight: bold;
+    /* You can add more styling as needed */
+}
+
+div.sidebar-item-container .active {
+  font-weight: bold;
+}
+
+.sidebar nav[role=doc-toc] ul>li>a.active, .sidebar nav[role=doc-toc] ul>li>ul>li>a.active{
+  font-weight: bold;
+}
+
+
+/*-- scss:rules --*/
