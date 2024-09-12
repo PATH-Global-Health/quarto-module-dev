@@ -82,8 +82,8 @@ Once our repository is on GitHub, we can configure the GitHub Pages site - which
 
 To publish from the `gh-pages` branch, run:
 
-```         
-r
+``` r
+
 usethis::use_github_pages(branch = "gh-pages")
 ```
 
@@ -162,7 +162,7 @@ This `quarto-publish.yml` I have worked on standardising across the projects I'v
 
 Other options for publishing content can be found here: <https://quarto.org/docs/publishing/>
 
-## Step 6 Push updates to GitHub  
+## Step 6 Push updates to GitHub
 
 We can now push the all of the following changes to GitHub and test if the publishing action has worked - don't worry that we haven't changed any content yet we will get there!
 
@@ -171,6 +171,217 @@ Switch to the `Terminal` pane and run the following:
 ``` bash
 git add . 
 git commit -m "deploying and testing github actions and publishing"  
-git push origin main 
+git push 
 ```
 
+## Step 7 Check build and status
+
+Head to the repo and go to the ▶️ Actions Tab - we're hoping to see something like this:
+
+![](images/build-success.png)
+
+Which shows us out Build action was completed, worked correctly and the website page should be rendered! 🙂🎉
+
+If you head back to the `<>code` tab and click the link we activated in the `About` section this should open up our github pages site and will hopefully currently be populated with Quartos book template!
+
+If the build action failed we will see somthing like this:
+
+![](images/build-fail.png)
+
+If we click into this GitHub will give us a good indication of what exactly failed:
+
+![](images/build-fail-description.PNG)
+
+The error here is caused by incorrect indentation in the YAML file. YAML is strict about indentation, and in this instance the cur<https://quarto.org/docs/guide/>rent `_quarto.yml` file, the `chapters:` key was incorrectly indented. We can correct this, commit and push the changes and our site was deployed correctly!
+
+Often build errors are informative and can be fixed easily enough - if you're struggling reach out to Hayley and we can always trouble shoot together!
+
+## Step 8 Adding content
+
+Now we have all the set up out the way we can start adding our content and updating the themeing!
+
+This step will be very context depenent on the type of materials we want to add to our modules so I have outlined some common steps across materials that have been built so far and we can always add more as we go.
+
+The Quarto Guide is going to be super useful <https://quarto.org/docs/guide/> especially if you're new to working in Markdown - I won't replicate the resources here and recommend using the Quarto guide as a reference point when writing in Quarto.
+
+There is always the option in Quarto to use the `visual` editor - this simplifies the process of writing and formatting content in markdown formats and allows users to focus on writing without needing to remember markdown syntax, making it easier for beginners and those unfamiliar with code-based formatting. The Visual Editor provides an interface similar to popular word processors like Microsoft Word or Google Docs.
+
+The Visual Editor includes toolbars with buttons for common formatting options such as:
+
+-   Bold and italic text
+
+-   Creating headings and subheadings
+
+-   Adding bullet points or numbered lists
+
+-   Inserting links, images, and tables
+
+-   Adding callouts for notes, warnings, or tips
+
+-   You can still insert and edit code chunks directly in the Visual Editor. These code chunks are executed as usual, and their outputs (tables, figures, etc.) are displayed inline, making it easier to integrate code into your documents.
+
+To use the Visual Editor in RStudio or other supported IDEs:
+
+-   Open any Quarto (`.qmd`) or markdown file in your project.
+
+-   Click the **"Visual"** button in the top right corner of the editor pane to toggle between the standard markdown editor and the Visual Editor.
+
+### Understanding the `_quarto.yml` file
+
+The `_quarto.yml` file is a configuration file that controls the structure and appearance of your Quarto project, such as the website's title, menu, and theme.
+
+For a **Quarto book**, the `_quarto.yml` file specifies the structure, appearance, and behavior of the book. Below is an example of what the structure might look like and what you will see when you open this initially in your project.
+
+``` yaml
+
+project:
+  type: book
+
+book:
+  title: "My Quarto Book"
+  author: "Author Name"
+  chapters:
+    - index.qmd
+    - introduction.qmd
+    - chapter1.qmd
+    - chapter2.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    css: styles.css
+```
+
+We want to start by modifying the `title` and `author` fields under `book` to what is relevant for the module (we can just delete the author line as it's not needed here)
+
+We can also add a `subtitle` that's nice to include in all our topics like this:
+
+``` yaml
+book:
+  title: Foundational Malaria Knowledge
+  subtitle: MACEPA Data Fellowship - Training Materials
+```
+
+The chapters section defines the order of the chapters in your book. It links to the `.qmd` files that will become the different sections of the book:
+
+``` yaml
+book:
+    chapters:
+        - index.qmd           # Main page or introduction
+        - introduction.qmd    # First chapter
+        - chapter1.qmd        # Subsequent chapters
+        - chapter2.qmd
+```
+
+You can add or remove chapter files as needed. Just make sure each file you list here exists in the project.
+
+For some of our modules we have several topics within a module and sub topics within them so we can use the `part` as well as `chapters` to achieve something like this:
+
+![](images/contents.png)
+
+To do so you can set the `_quarto.yml` to something this:
+
+``` yaml
+  chapters:
+  - index.qmd
+  - part: topic1-intro.qmd
+        chapters:
+        - topic1a-history-malaria.qmd
+        - topic1b-global-impact.qmd
+        - topic1c-endemicity.qmd
+  - part: topic2-intro.qmd
+        chapters: 
+        - topic2a-plasmodium-spp.qmd
+        - topic2b-lifecycle.qmd
+        - topic2c-immunity.qmd 
+   - part: topic3-intro.qmd
+        chapters: 
+        - topic3a-anopheles-trans.qmd
+        - topic3b-environment.qmd
+        - topic3c-human-behaviour.qmd
+        
+```
+
+In each of these instances the title that is in the `.qmd` file becomes the heading that is shown on the final website as shown in the image above.
+
+``` note
+Once you start adding `.qmd` files with module content make sure to replace the defualt files and include these in the `_quarto.yml` to ensure the modules are displayed on the site. Often I start adding content to the templates and renaming the files before creating new `.qmd` files 
+```
+
+### Adding custom styling
+
+We've already created custom PATH theming and I've saved all the necessary files in the `data-fellows box folder` under 'quarto-theming' [Data fellowship program planning](https://path.ent.box.com/folder/232722911784) → [Technical Content Organization](https://path.ent.box.com/folder/247841653539) → quarto-theming
+
+Copy all of these into your root folder and add the following to your `_quarto.yml` file
+
+``` yaml
+format:
+  html:
+    theme:
+    - cosmo
+    - custom.scss
+    template-partials: title-block.html
+    css: include/webex.css
+    include-after-body: include/webex.js
+    embed-resources: true 
+  pdf:
+    documentclass: scrreprt
+editor: visual
+```
+
+### Embedding PDFs
+
+If you have a slide deck to host on the website we first need to save this as a pdf and ensure it it then saved in the same root directory of our Quarto project.
+
+You can use the following syntax to embed the pdfs inside a `.qmd` file replacing the file name with the associated file name of your file.
+
+``` r
+<iframe src="file-name.pdf" width="800" height="600">
+
+</iframe> 
+```
+
+### Embedding YouTube Videos
+
+If you want to include videos hosted on YouTube an easy was to achieve this is with the following syntax, replacing the link with that to the video of interest:
+
+``` r
+{{< video https://www.youtube.com/embed/bJ6nS-I-HiM >}}
+```
+
+### Interative Quizzes
+
+You can use the `webexercises` [package](https://psyteachr.github.io/webexercises/)to produce quizes and is what I used in the [Foundational Epi module](https://path-global-health.github.io/df-foundational-epi-skills/quiz1.html)
+
+The documentation is a good place to start here and the source code in the Foundational Epi Module repository if you want to develop something similar!
+
+### Publishing content
+
+Once you have created the necessary module content in `.qmd` files, have updated the `_quarto.yml` file with the correct references for each chapter we can again push out changes to github and check out our newly published site!
+
+Remeber:
+
+``` bash
+
+git add . 
+git commit -m "commit message" 
+git push 
+```
+
+And it's as simple as that!
+
+## Wrapping It All Together: Maintaining Your Quarto Project
+
+By following these steps, you've built a robust workflow for creating, managing, and publishing your Quarto Book from scratch. Here are a few final tips to help you maintain and expand your project effectively:
+
+1.  **Iterating on Content Content updates:**
+    -   As your project evolves, you'll likely need to update chapters or add new ones. Remember, every time you modify a .qmd file or create a new one, ensure that the `_quarto.yml` file is updated accordingly. Push these changes to GitHub to automatically deploy updates.
+    -   Version control: Keep track of your content changes by writing clear commit messages. This makes it easy to refer back to previous versions if needed.
+2.  **Troubleshooting Common Issues:**
+    -   Build failures: Sometimes, your GitHub Actions may fail due to misconfigurations or syntax errors (e.g., in the `_quarto.yml` file). GitHub provides detailed logs for failed builds in the Actions tab, which can help pinpoint the issue.
+    -   Rendering issues: If the published site doesn't display content as expected, double-check that your .qmd files are properly linked in the `_quarto.yml` file and that all references (images, links, etc.) are correctly specified.
+3.  **Collaboration and Feedback Collaborative development:**
+    -   If you're working with a team on the resources, consider using GitHub's collaborative features like Pull Requests to review changes before they're merged into the main branch. This can help catch errors early and maintain consistency across the project.
+4. Ensure that your project dependencies (tracked by `renv.lock`) are up to date by regularly running `renv::snapshot()` after installing new R packages. This ensures that your environment remains consistent across different systems.
