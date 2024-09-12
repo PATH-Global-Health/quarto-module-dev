@@ -204,7 +204,9 @@ You can use the following syntax to embed the pdfs inside a `.qmd` file replacin
 If you want to include videos hosted on YouTube an easy was to achieve this is with the following syntax, replacing the link with that to the video of interest:
 
 ``` r
+
 {{< video https://www.youtube.com/embed/bJ6nS-I-HiM >}}
+
 ```
 
 ### Interative Quizzes
