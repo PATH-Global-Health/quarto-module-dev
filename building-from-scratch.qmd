@@ -95,7 +95,7 @@ Head back to the `<> Code` tab and in the `About` section on the top right open 
 
 In addition we can add a short description in this section as in the above image e.g. "MACEPA Data Fellows materials for the \[insert module title\]".
 
-## Step 5: Automate Deployment with GitHub Actions
+## Step 5: Automate Deployment with GitHub Actions {#sec-gh-action}
 
 This is something I've found works best for me and my workstyle when creating these modules. Instead of ever rendering my work locally and then publishing this to GitHub I include a GitHub Action command so that when I commit and push changes to the repository GitHub will automatically render the new outputs to the `gh-pages` site.
 
@@ -353,7 +353,7 @@ If you want to include videos hosted on YouTube an easy was to achieve this is w
 
 ### Interative Quizzes
 
-You can use the `webexercises` [package](https://psyteachr.github.io/webexercises/)to produce quizes and is what I used in the [Foundational Epi module](https://path-global-health.github.io/df-foundational-epi-skills/quiz1.html)
+You can use the `webexercises` [package](https://psyteachr.github.io/webexercises/) to produce quizes and is what I used in the [Foundational Epi module](https://path-global-health.github.io/df-foundational-epi-skills/quiz1.html)
 
 The documentation is a good place to start here and the source code in the Foundational Epi Module repository if you want to develop something similar!
 
@@ -384,4 +384,4 @@ By following these steps, you've built a robust workflow for creating, managing,
     -   Rendering issues: If the published site doesn't display content as expected, double-check that your .qmd files are properly linked in the `_quarto.yml` file and that all references (images, links, etc.) are correctly specified.
 3.  **Collaboration and Feedback Collaborative development:**
     -   If you're working with a team on the resources, consider using GitHub's collaborative features like Pull Requests to review changes before they're merged into the main branch. This can help catch errors early and maintain consistency across the project.
-4. Ensure that your project dependencies (tracked by `renv.lock`) are up to date by regularly running `renv::snapshot()` after installing new R packages. This ensures that your environment remains consistent across different systems.
+4.  Ensure that your project dependencies (tracked by `renv.lock`) are up to date by regularly running `renv::snapshot()` after installing new R packages. This ensures that your environment remains consistent across different systems.

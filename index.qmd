@@ -75,7 +75,7 @@ You should be able to work with GitHub now, i.e. push and pull!
 
 Before getting started we need to understand from what point we are building resources from - the following starting points cover the most common starting points we tend to find ourselves in
 
-| Starting Point                              | Description                                                                                                                                 |
-|-----------------------------------------|-------------------------------|
-| Building from scratch                       | Start here if you want to learn about setting up a completly new resource and with tips and steps about using GitHub for the first time too |
-| Building from an existing GitHub Repository | Start here if you are collaborating on resources and want to add additional materials to an already existing module                         |
+| Starting Point                                                             | Description                                                                                                                                 |
+|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| [Building from scratch](@building-from-scratch.qmd)                        | Start here if you want to learn about setting up a completly new resource and with tips and steps about using GitHub for the first time too |
+| [Building from an existing GitHub Repository](@building-from-existing.qmd) | Start here if you are collaborating on resources and want to add additional materials to an already existing module                         |
