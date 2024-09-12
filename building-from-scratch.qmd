@@ -83,7 +83,6 @@ Once our repository is on GitHub, we can configure the GitHub Pages site - which
 To publish from the `gh-pages` branch, run:
 
 ``` r
-
 usethis::use_github_pages(branch = "gh-pages")
 ```
 
@@ -306,9 +305,9 @@ To do so you can set the `_quarto.yml` to something this:
 
 In each of these instances the title that is in the `.qmd` file becomes the heading that is shown on the final website as shown in the image above.
 
-``` note
+::: callout-note
 Once you start adding `.qmd` files with module content make sure to replace the defualt files and include these in the `_quarto.yml` to ensure the modules are displayed on the site. Often I start adding content to the templates and renaming the files before creating new `.qmd` files 
-```
+::: 
 
 ### Adding custom styling
 

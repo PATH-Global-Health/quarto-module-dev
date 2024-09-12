@@ -2,7 +2,7 @@
 
 These resources are intended for users who are contributing to an existing project hosted on GitHub and want to collaborate on building or updating Quarto-based materials. You will learn how to clone the project, make changes locally, and collaborate with others via GitHub.
 
-Hopefully you have previously run the steps in the [Starting Point](@index.qmd) and are set up with GitHub - if not make sure you follow the steps set out there.
+Hopefully you have previously run the steps in the [Starting Point](index.qmd) and are set up with GitHub - if not make sure you follow the steps set out there.
 
 ## Step 1: Clone the Existing GitHub Repository
 
@@ -49,7 +49,6 @@ Now that your environment is set up, you can start working on the project. Wheth
 2.  **Create a new branch**: It's good practice to create a new branch for your changes so that you don't modify the main branch directly. To create a branch, run the following command in the **Terminal** tab in RStudio:
 
 ``` bash
-
 git checkout -b new-feature-branch
 ```
 
@@ -163,9 +162,9 @@ To do so you can set the `_quarto.yml` to something this:
 
 In each of these instances the title that is in the `.qmd` file becomes the heading that is shown on the final website as shown in the image above.
 
-``` note
+::: callout-note
 Once you start adding `.qmd` files with module content make sure to replace the defualt files and include these in the `_quarto.yml` to ensure the modules are displayed on the site. Often I start adding content to the templates and renaming the files before creating new `.qmd` files 
-```
+:::
 
 ### Adding custom styling
 
@@ -220,15 +219,12 @@ If your workflow involves making changes directly to the **main** branch, follow
 
 1.  **Stage your changes**: First, you need to add the modified files to the staging area. To see which files have been modified, run:
 
-    ``` bash
-
+``` bash
     git status
-    ```
-
-    This command will list the files that have been added, changed, or deleted. Once you're ready to stage them, run:
+```
+This command will list the files that have been added, changed, or deleted. Once you're ready to stage them, run:
 
 ``` bash
-
     git add .
 ```
 
@@ -236,19 +232,16 @@ The `.` adds all the changed files to the staging area. You can also stage indiv
 
 2.  **Commit your changes**: After staging your files, you'll need to commit them to the repository with a descriptive message that explains the changes you made. Run the following command:
 
-    ``` bash
-
-    git commit -m "Your descriptive commit message here"
-    ```
-
-    Make sure the commit message clearly states what changes you've made
+``` bash
+git commit -m "Your descriptive commit message here"
+```
+Make sure the commit message clearly states what changes you've made
 
 3.  **Push your changes**: Once you've committed your changes, push them to the **main** branch on GitHub by running:
 
-    ``` bash
-
+``` bash
     git push origin main
-    ```
+```
 
 This command will send your local changes to the main branch of the remote GitHub repository. After pushing, your changes will immediately be reflected in the repository and if a \[GitHub Action\]@sec-gh-action to publish has been set up this will automatically be reflected in the online site.
 
@@ -292,7 +285,7 @@ If you are working on a **forked repository** or need to sync your local reposit
 
 1.  **Pull changes from the main repository**: Run the following commands to fetch and merge changes from the upstream (original) repository:
 
-```{bash}
+``` bash 
 git fetch origin 
 git pull origin main 
 ```
